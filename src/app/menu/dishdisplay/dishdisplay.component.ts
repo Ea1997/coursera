@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-dishdisplay',
@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dishdisplay.component.css']
 })
 export class DishdisplayComponent implements OnInit {
-
+  @Input() data:any;
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.data)
   }
 
 }
