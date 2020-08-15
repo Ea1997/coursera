@@ -10,11 +10,25 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { DishdisplayComponent } from './menu/dishdisplay/dishdisplay.component';
+import {DishService} from './services/dish.service';
+import {PromotionService} from './services/promotion.service';
+import {FooterComponent} from '../app/footer/footer.component';
+import {HeaderComponent} from '../app/header/header.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import {AppRoutingModule} from './app-routing/app-routing.module';
+import {LeaderService} from './services/leader.service'
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    DishdisplayComponent
+    DishdisplayComponent,
+    FooterComponent,
+    HeaderComponent,
+    HomeComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -24,9 +38,10 @@ import { DishdisplayComponent } from './menu/dishdisplay/dishdisplay.component';
     MatListModule,
     MatGridListModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [DishService,PromotionService,LeaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
