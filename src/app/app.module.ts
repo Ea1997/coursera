@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MenuComponent } from './menu/menu.component';
 import { MatListModule } from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
@@ -18,7 +19,8 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
-import {LeaderService} from './services/leader.service'
+import {LeaderService} from './services/leader.service';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,8 @@ import {LeaderService} from './services/leader.service'
     HeaderComponent,
     HomeComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +43,12 @@ import {LeaderService} from './services/leader.service'
     MatButtonModule,
     MatCardModule,
     AppRoutingModule,
+    MatDialogModule
   ],
   providers: [DishService,PromotionService,LeaderService],
+  entryComponents:[
+    LoginComponent,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
