@@ -21,9 +21,15 @@ leader:leader;
   ) { }
 
   ngOnInit(): void {
-    this.dish=this.DishService.getFeaturedDish();
-    this.promotion=this.PromotionService.getFeaturedPromotion();
-    this.leader=this.LeaderService.getFeaturedLeader();
+   
+    this.DishService.getFeaturedDish().subscribe(dish => {
+     
+      this.dish = dish
+    });
+
+    this.PromotionService.getFeaturedPromotion().subscribe(promotion=>this.promotion=promotion);
+
+    this.LeaderService.getFeaturedLeader().subscribe(leader => this.leader = leader);
   }
 
 }

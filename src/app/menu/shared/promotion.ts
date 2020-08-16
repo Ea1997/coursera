@@ -1,5 +1,5 @@
 export class Promotion{
-    id:String;
+    id:number;
     name:String;
     image:String;
     label:String;
