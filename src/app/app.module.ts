@@ -31,6 +31,11 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSliderModule} from '@angular/material/slider';
 import { DishdetailComponent } from './menu/dishdetail/dishdetail.component';
+import {HttpClientModule} from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import {baseURL} from './menu/shared/baseUrl';
+import {ProcessHTTPMsgService} from './services/process-httpmsg.service';
+import { HighlightDirective } from './directives/highlight.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,9 +47,11 @@ import { DishdetailComponent } from './menu/dishdetail/dishdetail.component';
     AboutComponent,
     ContactComponent,
     LoginComponent,
-    DishdetailComponent
+    DishdetailComponent,
+    HighlightDirective
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -63,9 +70,10 @@ import { DishdetailComponent } from './menu/dishdetail/dishdetail.component';
     MatSelectModule,
     MatSlideToggleModule,
     MatProgressSpinnerModule,
-    MatSliderModule
+    MatSliderModule,
+    HttpClientModule
   ],
-  providers: [DishService,PromotionService,LeaderService],
+  providers: [DishService,PromotionService,LeaderService,ProcessHTTPMsgService,{provide:'BaseUrl' ,useValue:baseURL}],
   entryComponents:[
     LoginComponent,
   ],
