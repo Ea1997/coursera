@@ -11,15 +11,15 @@ export class LeaderService {
   constructor() { }
   getLeaders():Observable<leader[]> {
     let leader:leader[]=LEADERS;
-    return of(leader).pipe(delay(2000));
+    return of(leader).pipe(delay(1000));
   }
   getLeader(id:number):Observable<leader> {
     let leader:leader=LEADERS.filter((leader)=>(leader.id == id))[0]
-    return of(leader).pipe(delay(2000));
+    return of(leader).pipe(delay(1000));
   }
  
   getFeaturedLeader():Observable<leader>{
     let leader:leader=LEADERS.filter((leader)=>leader.featured)[0];
-    return of(leader).pipe(delay(2000));
+    return of(leader).pipe(delay(1000));
   }
 }

@@ -12,19 +12,21 @@ export class DishService {
 
   getDishes(): Observable<Dish[]> {
     let dish:Dish[]=DISHES
-    return of(dish).pipe(delay(2000));
+    return of(dish).pipe(delay(1000));
   }
 
   getDish(id: number): Observable<Dish> {
-    let dish:Dish=DISHES.filter((dish) => (dish.id === id))[0];
-    return of(dish).pipe(delay(2000));
+    console.log(id)
+    let dish:Dish=DISHES.filter((dish) => (dish.id == id))[0];
+    console.log(dish)
+    return of(dish).pipe(delay(1000));
   }
 
   getFeaturedDish(): Observable<Dish> {
     let dish:Dish=DISHES.filter((dish) => dish.featured)[0];;
-    return of(dish).pipe(delay(2000));
+    return of(dish).pipe(delay(1000));
   }
   getDishIds():Observable<number[] | any>{
-    return of(DISHES.map(dish  => dish.id)).pipe(delay(2000));
+    return of(DISHES.map(dish  => dish.id)).pipe(delay(1000));
   }
 }
