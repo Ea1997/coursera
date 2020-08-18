@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
 dish:Dish;
 promotion:Promotion;
 leader:leader;
+errMess: string;
   constructor(
     private DishService:DishService,
     private PromotionService:PromotionService,
@@ -35,11 +36,12 @@ leader:leader;
     this.DishService.getFeaturedDish().subscribe(dish => {
      
       this.dish = dish
-    });
+    },
+    errmess => this.errMess = <any>errmess);
 
-    this.PromotionService.getFeaturedPromotion().subscribe(promotion=>this.promotion=promotion);
+    this.PromotionService.getFeaturedPromotion().subscribe(promotion=>this.promotion=promotion,errmess => this.errMess = <any>errmess);
 
-    this.LeaderService.getFeaturedLeader().subscribe(leader => this.leader = leader);
+    this.LeaderService.getFeaturedLeader().subscribe(leader => this.leader = leader, errmess => this.errMess = <any>errmess);
   }
 
 }

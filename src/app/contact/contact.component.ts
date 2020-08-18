@@ -1,15 +1,23 @@
 import { Component, OnInit , ViewChild } from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 import {Feedback , ContactType} from '../menu/shared/feedback';
+import {FeedbackService} from '../services/feedback.service';
+import {expand} from '../animations/app-animations';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  styleUrls: ['./contact.component.css'],
+    animations: [
+      expand()
+    ]
 })
 export class ContactComponent implements OnInit {
   feedbackForm:FormGroup;
 feedback:Feedback;
+feedbacktemp:Feedback=null;
+errMess: string;
 contactType=ContactType;
+loading:boolean=false;
 @ViewChild('form') FeedbackFormDirective;
 formErrors={
   'firstname':'',
@@ -42,7 +50,8 @@ ValidationMessages={
 }
 };
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private feedbackservice:FeedbackService
   ) { 
     this.createFrom();
   }
@@ -83,8 +92,19 @@ for (const field in this.formErrors){
 }
   }
   onSubmit(){
+    this.loading=true;
     this.feedback=this.feedbackForm.value;
-    console.log(this.feedback);
+    console.log(this.feedback)
+    this.feedbackservice.submitFeedback(this.feedback).subscribe(
+      feedback=>{
+        this.feedbacktemp=feedback;
+        this.loading=false;
+        setTimeout(()=>{ this.feedbacktemp=null; }, 5000);
+      },
+      errmess => {
+        this.errMess = <any>errmess;
+        this.loading=false
+      });
     this.feedbackForm.reset({
       firstname:'',
       lastname:'',
